@@ -160,4 +160,12 @@ extension ImagesListService {
             }
         }
     }
+
+	func invertLike(index: Int, completion: @escaping (Bool) -> Void) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
+			guard let self = self else { return }
+			self.photos[index].isLiked = !self.photos[index].isLiked
+			completion(self.photos[index].isLiked)
+		}
+	}
 }

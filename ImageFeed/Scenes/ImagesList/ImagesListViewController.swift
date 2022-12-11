@@ -221,28 +221,11 @@ extension ImagesListViewController: ImagesListCellDelegate {
         completion: @escaping (Bool) -> Void
     ) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let photo = deps.imagesListService.photos[indexPath.row]
 
-        UIBlockingProgressHUD.show()
-        deps.imagesListService.changeLike(
-            index: indexPath.row,
-            isLiked: !photo.isLiked
-        ) { [weak self] result in
-            defer { UIBlockingProgressHUD.dismiss() }
-
-            guard let self else { return }
-
-            switch result {
-            case let .success(isLiked):
-                completion(isLiked)
-            case let .failure(error):
-                self.deps.errorPresenter.displayAlert(
-                    over: self,
-                    title: error.localizedDescription,
-                    actionTitle: "OK"
-                )
-            }
-
-        }
+		UIBlockingProgressHUD.show()
+		deps.imagesListService.invertLike(index: indexPath.row) { isLiked in
+			completion(isLiked)
+			UIBlockingProgressHUD.dismiss()
+		}
     }
 }

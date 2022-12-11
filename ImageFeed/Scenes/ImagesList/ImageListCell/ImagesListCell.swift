@@ -173,8 +173,8 @@ extension ImagesListCell {
     }
 
     @objc func favoriteButtonPressed() {
-        delegate?.imageListCellDidTapLike(self) { [weak self] in
-            self?.setIsLiked($0)
+        delegate?.imageListCellDidTapLike(self) { [weak self] isLiked in
+			self?.setIsLiked(isLiked)
         }
     }
 }
