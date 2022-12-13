@@ -38,7 +38,7 @@ struct ModelService: ModelLoading {
     ) -> URLSessionTask {
 
         var request = URLRequest(url: url)
-        if let bearerToken {
+        if let bearerToken = bearerToken {
             request.setValue(
                 "Bearer \(bearerToken)",
                 forHTTPHeaderField: "Authorization"

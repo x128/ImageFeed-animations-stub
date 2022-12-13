@@ -14,7 +14,7 @@ struct OAuth2TokenStorage: OAuth2TokenStoring {
         }
 
         set {
-            if let newValue {
+            if let newValue = newValue {
                 keychainWrapper.set(newValue, forKey: .key(.tokenDefaultsKey))
             } else {
                 keychainWrapper.removeObject(forKey: .key(.tokenDefaultsKey))

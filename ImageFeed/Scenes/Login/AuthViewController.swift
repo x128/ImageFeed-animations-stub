@@ -124,7 +124,7 @@ extension AuthViewController: OAuthCodeViewControllerDelegate {
         dep.oauth2TokenExtractor.fetchAuthToken(
             authCode: code
         ) { [weak self] result in
-            guard let self else { return }
+            guard let self = self else { return }
 
             DispatchQueue.main.async {
                 UIBlockingProgressHUD.dismiss()

@@ -33,7 +33,7 @@ struct UserProfile: Codable {
 
     var profilePictureURL: URL? {
         guard
-            let profileImage,
+            let profileImage = profileImage,
             let urlString = profileImage.best,
             let url = URL(string: urlString)
         else { return nil }

@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 struct Photo {
     let id: String

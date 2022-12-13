@@ -134,7 +134,7 @@ extension ProfileViewController {
     }
 
     private func stopObservingAvatarChanges() {
-        if let profileAvatarObserver {
+        if let profileAvatarObserver = profileAvatarObserver {
             dep.notificationCenter.removeObserver(profileAvatarObserver)
         }
     }

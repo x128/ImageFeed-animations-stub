@@ -194,7 +194,7 @@ extension ImagesListViewController {
     }
 
     private func stopObservingImagesListChanges() {
-        if let imagesListObserver {
+        if let imagesListObserver = imagesListObserver {
             deps.notificationCenter.removeObserver(imagesListObserver)
         }
     }

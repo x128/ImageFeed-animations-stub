@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 final class ImagesListService {
     let didChangeNotification = Notification.Name(
@@ -62,7 +63,7 @@ extension ImagesListService {
             url: photosURL,
             bearerToken: bearer
         ) { [weak self] (result: Result<[PhotoResult], Error>) in
-            guard let self else { return }
+            guard let self = self else { return }
 
             switch result {
             case let .success(photoResults):
@@ -125,7 +126,7 @@ private extension PhotoResult {
 
 extension ImagesListService {
     func changeLike(index: Int, isLiked: Bool, completion: @escaping (Result<Bool, Error>) -> Void) {
-        guard let bearer else { return }
+        guard let bearer = bearer else { return }
 
         let photo = photos[index]
 

@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 struct SingleImageViewModel {
     let image: URL

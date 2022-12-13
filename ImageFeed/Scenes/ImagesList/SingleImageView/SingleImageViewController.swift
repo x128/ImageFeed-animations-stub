@@ -21,7 +21,7 @@ final class SingleImageViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let image { displayImage(image) }
+        if let image = image { displayImage(image) }
     }
 
     // MARK: Components
@@ -107,7 +107,7 @@ extension SingleImageViewController {
     }
 
     @objc private func sharePressed() {
-        if let image {
+        if let image = image {
             let activity = UIActivityViewController(
                 activityItems: [image], applicationActivities: nil)
 
